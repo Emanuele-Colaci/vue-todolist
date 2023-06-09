@@ -8,37 +8,37 @@ createApp({
                 { 
                     text: "Fare la spesa", 
                     done: false,
-                    edit_enabled: ''
+                    edit_enabled: false
                 },
                 { 
                     text: "Pulire la casa", 
                     done: true,
-                    edit_enabled: ''
+                    edit_enabled: false
                 },
                 {
                     text: "Studiare per l'esame", 
                     done: false,
-                    edit_enabled: '' 
+                    edit_enabled: false 
                 },
                 { 
                     text: "Fare esercizio fisico", 
                     done: false,
-                    edit_enabled: '' 
+                    edit_enabled: false 
                 },
                 { 
                     text: "Preparare la cena", 
                     done: true,
-                    edit_enabled: ''
+                    edit_enabled: false
                 },
                 { 
                     text: "Leggere un libro", 
                     done: false, 
-                    edit_enabled: ''
+                    edit_enabled: false
                 },
                 { 
                     text: "Chiamare un amico", 
                     done: true,
-                    edit_enabled: ''
+                    edit_enabled: false
                 }
             ]
         }
@@ -53,8 +53,7 @@ createApp({
         addTask(){
             let obj = {
                 text: this.newTask, 
-                done: false,
-                edit_enabled: ''
+                done: false,             
             }
             this.tasks.push(obj);
 
