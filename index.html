@@ -23,7 +23,12 @@
                                 <h2>Non ci sono più task</h2>
                             </div>
                             <li class="padding" v-for="(task, index) in tasks">
-                                {{ task.text }}
+                                <div v-if="task.edit_enabled">
+                                    <input type="text" v-model="task.text" @keyup.enter="edit_task(index)">
+                                </div>
+                                <div v-else>
+                                    {{ task.text }}
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -35,8 +40,12 @@
                                 <button :class="task.done ? 'btn-blue' : 'btn-black'" @click="status(index)">
                                     <i class="fa-solid" :class="task.done ? 'fa-check' : 'fa-x'"></i>
                                 </button>
-                                <button><i class="fa-solid fa-pen"></i></button>
-                                <button><i class="fa-solid fa-trash" @click="deleteTask(index)"></i></button>
+                                <button @click="edit_task(index)">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                                <button @click="deleteTask(index)">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
                             </li>
                         </ul>
                     </div>
