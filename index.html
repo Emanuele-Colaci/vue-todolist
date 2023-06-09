@@ -19,6 +19,9 @@
                 <div class="col">
                     <div class="content">
                         <ul class="list-style">
+                            <div v-if="tasks.length === 0">
+                                <h2>Non ci sono più task</h2>
+                            </div>
                             <li class="padding" v-for="(task, index) in tasks">
                                 {{ task.text }}
                             </li>
@@ -29,9 +32,11 @@
                     <div class="content">
                         <ul class="list-style">
                             <li v-for="(task, index) in tasks">
-                                <button><i class="fa-solid fa-check"></i></button>
+                                <button :class="task.done ? 'btn-blue' : 'btn-black'" @click="status(index)">
+                                    <i class="fa-solid" :class="task.done ? 'fa-check' : 'fa-x'"></i>
+                                </button>
                                 <button><i class="fa-solid fa-pen"></i></button>
-                                <button><i class="fa-solid fa-trash"></i></button>
+                                <button><i class="fa-solid fa-trash" @click="deleteTask(index)"></i></button>
                             </li>
                         </ul>
                     </div>
@@ -40,12 +45,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="content">
-                        <input class="input-text" type="text" name="edit_task" placeholder="Nuova task...">
+                        <input class="input-text" type="text" name="edit_task" placeholder="Nuova task..." v-model="newTask" @keyup.enter="addTask">
                     </div>
                 </div>
                 <div class="col">
                     <div class="content">
-                        <button class="button-padding">Invia</button>
+                        <button class="button-padding" @click="addTask">Invia</button>
                     </div>
                 </div>
             </div>
