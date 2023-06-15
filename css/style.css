@@ -55,10 +55,14 @@ h1{
 }
 
 .content .btn-black{
+    color: #fff;
     background-color: rgb(33, 33, 33);
     padding: 5px 8px;
 }
 
+.completed-task{
+    text-decoration: line-through;
+}
 
 .col-12{
     width: 100%;
